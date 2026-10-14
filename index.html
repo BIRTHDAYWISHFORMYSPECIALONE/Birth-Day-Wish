@@ -240,26 +240,9 @@ footer { text-align: center; padding: 30px; background: #050405; color: #766c72;
 
  <style>
      
-     function toggleMusic() {
-  const music = document.getElementById("bgMusic");
-  const button = document.getElementById("musicButton");
-
-  if (music.paused) {
-    music.play()
-      .then(() => {
-        button.textContent = "🎵";
-      })
-      .catch(error => {
-        console.error("Music could not play:", error);
-      });
-  } else {
-    music.pause();
-    button.textContent = "🔇";
-  }
-}
-     document.getElementById("bgMusic").play().catch(error => {
-  console.log("Music playback requires user interaction.");
-});
+     document.getElementById("bgMusic").play()
+  .catch(error => console.error("Music error:", error));
+     
     </style>
     
 </head>
@@ -276,15 +259,6 @@ footer { text-align: center; padding: 30px; background: #050405; color: #766c72;
     </div>
 </div>
     
-
-<button
-  class="music-button"
-  type="button"
-  onclick="toggleMusic()"
-  id="musicButton"
->
-  🎵
-</button>
 
 <audio id="bgMusic" loop>
   <source src="./music.mp3.mp3" type="audio/mpeg">
