@@ -237,6 +237,11 @@ footer { text-align: center; padding: 30px; background: #050405; color: #766c72;
 ::-webkit-scrollbar-track { background: #080608; }
 ::-webkit-scrollbar-thumb { background: #8f4a63; }
 </style>
+
+    <style> document.getElementById("bgMusic").play()
+  .catch(error => console.error("Music error:", error));</style>
+
+    
 </head>
 
 <body>
@@ -250,11 +255,12 @@ footer { text-align: center; padding: 30px; background: #050405; color: #766c72;
         <button class="enter-button" onclick="enterWebsite()">Open Your Surprise</button>
     </div>
 </div>
+    
 
-<!-- MUSIC -->
-<audio id="music" src="./music.mp3.mp3" loop></audio>
+<audio id="bgMusic" loop>
+  <source src="./music.mp3.mp3" type="audio/mpeg">
+</audio>
 
-    <button class="music-button" onclick="toggleMusic()" id="musicButton">🎵</button>
     
 <!-- HERO -->
 <section class="hero">
