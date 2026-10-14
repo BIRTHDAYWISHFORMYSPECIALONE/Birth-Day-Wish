@@ -239,9 +239,43 @@ footer { text-align: center; padding: 30px; background: #050405; color: #766c72;
 </style>
 
  <style>
-     
-     document.getElementById("bgMusic").play()
-  .catch(error => console.error("Music error:", error));
+     let musicPlaying = false;
+
+function enterWebsite() {
+    document.getElementById("opening").classList.add("hide");
+
+    const music = document.getElementById("bgMusic");
+    const button = document.getElementById("musicButton");
+
+    music.play().then(() => {
+        musicPlaying = true;
+        if (button) button.innerHTML = "🔊";
+    }).catch((error) => {
+        musicPlaying = false;
+        if (button) button.innerHTML = "🎵";
+        console.error("Autoplay prevented:", error);
+    });
+
+    startPetals();
+}
+
+function toggleMusic() {
+    const music = document.getElementById("bgMusic");
+    const button = document.getElementById("musicButton");
+
+    if (musicPlaying) {
+        music.pause();
+        if (button) button.innerHTML = "🎵";
+        musicPlaying = false;
+    } else {
+        music.play().then(() => {
+            if (button) button.innerHTML = "🔊";
+            musicPlaying = true;
+        }).catch((error) => {
+            console.error("Playback error:", error);
+        });
+    }
+}
      
     </style>
     
@@ -261,8 +295,10 @@ footer { text-align: center; padding: 30px; background: #050405; color: #766c72;
     
 
 <audio id="bgMusic" loop>
-  <source src="./music.mp3.mp3" type="audio/mpeg">
+    <source src="./music.mp3" type="audio/mpeg">
 </audio>
+
+    <button class="music-button" id="musicButton" onclick="toggleMusic()">🎵</button>
     
 <!-- HERO -->
 <section class="hero">
