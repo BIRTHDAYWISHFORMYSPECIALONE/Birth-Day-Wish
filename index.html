@@ -238,23 +238,8 @@ footer { text-align: center; padding: 30px; background: #050405; color: #766c72;
 ::-webkit-scrollbar-thumb { background: #8f4a63; }
 </style>
 
- <style>const music = document.getElementById("bgMusic");
-const button = document.getElementById("musicButton");
-
-button.addEventListener("click", async () => {
-  try {
-    if (music.paused) {
-      await music.play();
-      button.textContent = "🔇 Pause Music";
-    } else {
-      music.pause();
-      button.textContent = "🎵 Play Music";
-    }
-  } catch (error) {
-    console.error("Could not play music:", error);
-    alert("Music could not play. Please check the audio file path.");
-  }
-});
+ <style>document.getElementById("bgMusic").play()
+  .catch(error => console.error("Music error:", error));
     </style>
     
 </head>
@@ -272,7 +257,7 @@ button.addEventListener("click", async () => {
 </div>
     
 
-<button id="musicButton" type="button">🎵 Play Music</button>
+<button class="music-button" onclick="./music.mp3.mp3" id="musicButton">🎵</button>
 
 <audio id="bgMusic" loop>
   <source src="./music.mp3.mp3" type="audio/mpeg">
